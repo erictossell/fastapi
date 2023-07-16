@@ -16,12 +16,14 @@ create_db_and_tables()
 create_example_item()
 create_commands()
 
-
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Allow CORS from React app
+    allow_origins=[
+        "http://localhost:3000",
+        "https://mplusbot.up.railway.app",
+    ],  # Allow CORS from React app
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -38,25 +40,6 @@ async def root():
     return {"message": "Hello World. Welcome to FastAPI!"}
 
 
-@app.get("/path")
-async def demo_get():
-    return {
-        "message": "This is /path endpoint, use a post request to transform the text to uppercase"
-    }
-
-
-@app.post("/path")
-async def demo_post(inp: Msg):
-    return {"message": inp.msg.upper()}
-
-
-@app.get("/path/{path_id}")
-async def demo_get_path_id(path_id: int):
-    return {
-        "message": f"This is /path/{path_id} endpoint, use post request to retrieve result"
-    }
-
-
 @app.get("/item/{name}")
 async def read_items(name: str):
     item = select_item_by_name(name)
@@ -70,7 +53,7 @@ async def read_command(name: str):
     command = select_command_by_name(name)
     if command is None:
         return {"error": "Item not found"}
-    image_url = f"http://127.0.0.1:8000/{command.example_image_url}"
+    image_url = f"https://mplus-api.up.railway.app/{command.example_image_url}"
     return {
         "id": command.id,
         "name": command.name,

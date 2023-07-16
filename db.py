@@ -1,21 +1,12 @@
 from sqlmodel import SQLModel, create_engine, Session, select
-from models.item import Item
 from models.command import Command
 
-DATABASE_URL = "sqlite:///.test.db"
+DATABASE_URL = "sqlite:///.data.db"
 engine = create_engine(DATABASE_URL)
 
 
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
-
-
-def create_example_item():
-    with Session(engine) as session:
-        item = Item(name="Foo", description="This is an item")
-        session.add(item)
-        session.commit()
-    return item
 
 
 def create_commands():
@@ -70,12 +61,6 @@ def create_commands():
         # Query the database to get the list of inserted commands
         commands = session.query(Command).all()
     return commands
-
-
-def select_item_by_name(item_name: str):
-    with Session(engine) as session:
-        item = session.exec(select(Item).where(Item.name == item_name)).first()
-    return item
 
 
 def select_command_by_name(command_name: str):
