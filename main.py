@@ -1,4 +1,5 @@
 """main.py is responsible for handling all requests and returning a response."""
+# pylint: disable=E0611
 from pydantic import BaseModel
 
 from fastapi import FastAPI
@@ -31,11 +32,12 @@ app.add_middleware(
 app.mount("/images", StaticFiles(directory="images"), name="images")
 
 
-# pylint: disable=C0115
+# pylint: disable=C0115,R0903
 class Msg(BaseModel):
     msg: str
 
 
+# pylint: disable=C0016
 @app.get("/")
 async def root():
     return {"message": "Hello, you've found the default root of the MplusAPI!"}
