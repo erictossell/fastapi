@@ -37,7 +37,7 @@ class Msg(BaseModel):
     msg: str
 
 
-# pylint: disable=C0016
+# pylint: disable=C0116
 @app.get("/")
 async def root():
     return {"message": "Hello, you've found the default root of the MplusAPI!"}
