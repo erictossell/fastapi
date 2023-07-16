@@ -35,15 +35,7 @@ class Msg(BaseModel):
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World. Welcome to FastAPI!"}
-
-
-@app.get("/item/{name}")
-async def read_items(name: str):
-    item = select_item_by_name(name)
-    if item is None:
-        return {"error": "Item not found"}
-    return item
+    return {"message": "Hello, you've found the default root of the MplusAPI!"}
 
 
 @app.get("/command/{name}")

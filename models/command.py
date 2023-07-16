@@ -1,6 +1,7 @@
 from sqlmodel import SQLModel, Field
 
 
+# pylint: disable=too-few-public-methods
 class Command(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
     name: str = Field()

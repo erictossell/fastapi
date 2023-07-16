@@ -15,39 +15,43 @@ def create_commands():
         command_items = [
             {
                 "name": "guild daily",
-                "description": "Retrieve a daily report of Mythic+ Runs completed so far",
+                "description": "Retrieve a daily report of Mythic+ Runs "
+                "completed so far",
                 "usage": "/guild daily",
-                "example_image_url": "./images/daily_guild_report.png",
+                "example_image_url": "./images/daily_guild_report.webp",
             },
             {
                 "name": "guild weekly",
-                "description": "Retrieve a weekly report of Mythic+ Runs completed so far",
+                "description": "Retrieve a weekly report of Mythic+ Runs "
+                "completed so far",
                 "usage": "/guild weekly",
-                "example_image_url": "./images/weekly_guild_report.png",
+                "example_image_url": "./images/weekly_guild_report.webp",
             },
             {
                 "name": "guild item_level",
-                "description": "Retrieve a leaderboard of the characters with the 10 highest item levels.",
+                "description": "Retrieve a leaderboard of the characters "
+                "with the 10 highest item levels.",
                 "usage": "/guild item_level",
-                "example_image_url": "./images/guild_item_level.png",
+                "example_image_url": "./images/guild_item_level.webp",
             },
             {
                 "name": "guild mythic_plus",
-                "description": "Retrieve a leaderboard of the characters with the 10 highest Mythic+ scores by character.",
+                "description": "Retrieve a leaderboard of the characters "
+                "with the 10 highest Mythic+ scores by character.",
                 "usage": "/guild mythic_plus",
-                "example_image_url": "./images/guild_mythic_plus.png",
+                "example_image_url": "./images/guild_mythic_plus.webp",
             },
             {
                 "name": "character best_runs",
                 "description": "Retrieve the best runs for a given character.",
                 "usage": "/character best_runs <name> <realm>",
-                "example_image_url": "./images/character_best.png",
+                "example_image_url": "./images/character_best.webp",
             },
             {
                 "name": "character recent_runs",
                 "description": "Retrieve the recent runs for a given character.",
                 "usage": "/character recent_runs <name> <realm>",
-                "example_image_url": "./images/character_recent.png",
+                "example_image_url": "./images/character_recent.webp",
             },
             # Add more command items as needed
         ]
