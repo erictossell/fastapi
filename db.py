@@ -1,3 +1,5 @@
+"""db.py is responsible for handling all database operations."""
+
 from sqlmodel import SQLModel, create_engine, Session, select
 from models.command import Command
 
@@ -6,10 +8,12 @@ engine = create_engine(DATABASE_URL)
 
 
 def create_db_and_tables():
+    """Generate the sqlite instance if it does not exist."""
     SQLModel.metadata.create_all(engine)
 
 
 def create_commands():
+    """Create the bot commands and their sample data."""
     with Session(engine) as session:
         # Define a list of command items
         command_items = [
@@ -68,6 +72,7 @@ def create_commands():
 
 
 def select_command_by_name(command_name: str):
+    """Select a specific command by name."""
     with Session(engine) as session:
         command = session.exec(
             select(Command).where(Command.name == command_name)
@@ -77,6 +82,7 @@ def select_command_by_name(command_name: str):
 
 
 def select_commands():
+    """Select all commands."""
     with Session(engine) as session:
         commands = session.exec(select(Command)).fetchall()
 

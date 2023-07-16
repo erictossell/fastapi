@@ -1,14 +1,16 @@
-from fastapi import FastAPI
+"""main.py is responsible for handling all requests and returning a response."""
 from pydantic import BaseModel
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
 from db import (
     create_commands,
     create_db_and_tables,
     select_command_by_name,
     select_commands,
 )
-
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 
 create_db_and_tables()
 create_commands()
@@ -29,6 +31,7 @@ app.add_middleware(
 app.mount("/images", StaticFiles(directory="images"), name="images")
 
 
+# pylint: disable=C0115
 class Msg(BaseModel):
     msg: str
 
@@ -40,6 +43,7 @@ async def root():
 
 @app.get("/command/{name}")
 async def read_command(name: str):
+    """Return a specific command's details."""
     command = select_command_by_name(name)
     if command is None:
         return {"error": "Item not found"}
@@ -55,6 +59,7 @@ async def read_command(name: str):
 
 @app.get("/command/")
 async def read_all_commands():
+    """Return all command names in a list."""
     commands = select_commands()
     if commands is None:
         return {"error": "Item not found"}
