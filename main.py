@@ -20,7 +20,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "https://mplusbot.up.railway.app",
-        "https://mythicplusbot.dev",
+        "https://www.mythicplusbot.dev",
     ],  # Allow CORS from React app
     allow_credentials=True,
     allow_methods=["*"],
