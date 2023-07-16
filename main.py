@@ -3,17 +3,14 @@ from pydantic import BaseModel
 from db import (
     create_commands,
     create_db_and_tables,
-    create_example_item,
     select_command_by_name,
-    select_item_by_name,
     select_commands,
 )
-from models.item import Item
+
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 create_db_and_tables()
-create_example_item()
 create_commands()
 
 app = FastAPI()
