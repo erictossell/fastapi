@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "This example starts up a FastAPI server"
 authors = ["DeviousLab <deviouslab@gmail.com>"]
 license = "MIT"
+packages = [
+  { include = "app" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -17,3 +20,4 @@ sqlmodel = "^0.0.14"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+

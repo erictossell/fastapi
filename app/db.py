@@ -1,7 +1,7 @@
 """db.py is responsible for handling all database operations."""
 
 from sqlmodel import SQLModel, create_engine, Session, select
-from models.command import Command
+from app.models.command import Command
 
 DATABASE_URL = "sqlite:///.data.db"
 engine = create_engine(DATABASE_URL)

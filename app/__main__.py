@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from db import (
+from app.db import (
     create_commands,
     create_db_and_tables,
     select_command_by_name,
